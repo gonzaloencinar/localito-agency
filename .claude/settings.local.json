@@ -11,7 +11,11 @@
       "Bash(npm install:*)",
       "Bash(lsof:*)",
       "Bash(npm run dev:*)",
-      "Bash(curl:*)"
+      "Bash(curl:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(gh api:*)"
     ]
   }
 }
