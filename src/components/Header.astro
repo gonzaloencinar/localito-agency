@@ -4,11 +4,8 @@ import svgPinkStar from '../assets/pink-star.svg'
 import { author, buy } from '../sample'
 
 const links = [
-    { name: 'Sobre Nosotros', path: '/#sobre-nosotros', target: '_self' },
     { name: 'Servicios', path: '/#servicios', target: '_self' },
-    { name: 'Sectores', path: '/#sectores', target: '_self' },
     { name: 'Casos de Éxito', path: '/#casos', target: '_self' },
-    { name: 'FAQs', path: '/#faq', target: '_self' },
     { name: 'Contacto', path: '/contacto/', target: '_self' },
 ]
 
@@ -16,8 +13,8 @@ const { pathname } = Astro.url
 ---
 
 <header class="relative border-b-3 p-7 overflow-hidden">
-    <img src={svgPinkStar.src} alt="svg" width="80" class="absolute -right-9 -top-4" />
-    <img src={svgPinkStar.src} alt="svg" width="80" class="absolute -left-8 -bottom-5 hidden md:block" />
+    <img src={svgPinkStar.src} alt="" width="80" class="absolute -right-9 -top-4" aria-hidden="true" />
+    <img src={svgPinkStar.src} alt="" width="80" class="absolute -left-8 -bottom-5 hidden md:block" aria-hidden="true" />
 
 
     <div class="flex border-3 border-black bg-white max-w-[310px] md:max-w-xl m-auto relative z-10">
@@ -35,7 +32,7 @@ const { pathname } = Astro.url
                     <img src={svgLogoPin.src} alt="logo" width="20" /> {author.nickname}
                 </a>
             </div>
-            <a href="#" class="flex md:hidden" id="menu-open">
+            <a href="#" class="flex md:hidden" id="menu-open" aria-label="Abrir menú">
                 <i class="ri-menu-2-line text-2xl"></i>
             </a>
             <ul class="hidden md:flex">
@@ -54,7 +51,7 @@ const { pathname } = Astro.url
   <div class="block md:hidden fixed left-0 top-0 h-full w-full bg-white z-20 p-3 transition-all duration-300 -translate-x-[100%]" id="menu-content">
     <div class="flex p-6">
         <span class="flex-1 font-bold uppercase">Menu</span>
-        <a href="#" id="menu-close">
+        <a href="#" id="menu-close" aria-label="Cerrar menú">
            <i class="ri-close-line text-3xl"></i>
         </a>
     </div>

@@ -6,7 +6,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
- site: 'https://localito.io',
+ site: 'https://www.localito.io',
  adapter: vercel(),
  integrations: [sitemap()],
  vite: {

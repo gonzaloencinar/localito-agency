@@ -58,7 +58,7 @@ const testimonials = [
             <p>{item.comment}</p>
             <div class="flex items-center gap-2">
               <div><div class="size-11 rounded-full border overflow-hidden">
-                  <img src={item.author.pic} alt="" class="w-full h-full object-cover" />
+                  <img src={item.author.pic} alt={item.author.name} class="w-full h-full object-cover" />
               </div></div>
               <div>
                 <h3 class="font-medium">{item.author.name}</h3>

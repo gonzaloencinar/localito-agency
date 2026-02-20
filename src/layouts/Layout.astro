@@ -20,10 +20,14 @@ const {
 		<title>{title}</title>
 		<meta name="description" content={description} />
 
+		<!-- Canonical -->
+		<link rel="canonical" href={`https://www.localito.io${Astro.url.pathname}`} />
+
 		<!-- Open Graph -->
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />
 		<meta property="og:type" content="website" />
+		<meta property="og:url" content={`https://www.localito.io${Astro.url.pathname}`} />
 		<meta property="og:locale" content="es_ES" />
 		<meta property="og:site_name" content="Localito" />
 
@@ -38,7 +42,7 @@ const {
 			"@type": "ProfessionalService",
 			"name": "Localito",
 			"description": "Agencia especializada en SEO local. Posicionamos negocios en Google Maps y búsquedas locales.",
-			"url": "https://localito.es",
+			"url": "https://www.localito.io",
 			"email": "hola@localito.io",
 			"serviceType": ["SEO Local", "Optimización Google Business Profile", "Gestión de Reseñas", "Citaciones Locales"],
 			"areaServed": {
@@ -54,7 +58,9 @@ const {
 		})} />
 	</head>
 	<body>
-		<slot />
+		<main>
+			<slot />
+		</main>
 	</body>
 </html>
 
