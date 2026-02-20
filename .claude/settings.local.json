@@ -7,7 +7,11 @@
       "Bash(npx skills add https://github.com/astrolicious/agent-skills --skill astro --yes)",
       "Bash(npx skills add https://github.com/delineas/astro-framework-agents --skill astro-framework --yes)",
       "Bash(npm run build:*)",
-      "WebFetch(domain:cdn.jsdelivr.net)"
+      "WebFetch(domain:cdn.jsdelivr.net)",
+      "Bash(npm install:*)",
+      "Bash(lsof:*)",
+      "Bash(npm run dev:*)",
+      "Bash(curl:*)"
     ]
   }
 }

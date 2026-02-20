@@ -4,7 +4,7 @@ const author = {
   linkedin: `https://www.linkedin.com/company/localito`,
   ig: `https://www.instagram.com/localito.seo/`,
   x: `https://x.com/localito_seo`,
-  email: "mailto:hola@localito.es",
+  email: "mailto:hola@localito.io",
 };
 
 const buy = {

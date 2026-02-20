@@ -1,13 +1,12 @@
 ---
-import logoStar from '../assets/logo-star.svg'
+import svgLogoPin from '../assets/logo-pin.svg'
 import svgPinkStar from '../assets/pink-star.svg'
 import { author, buy } from '../sample'
 
 const links = [
     { name: 'Servicios', path: '/#servicios', target: '_self' },
     { name: 'Casos de Éxito', path: '/#casos', target: '_self' },
-    { name: 'Blog', path: '/blog/', target: '_self' },
-    { name: 'Contacto', path: buy.link, target: '_self' },
+    { name: 'Contacto', path: '/contacto/', target: '_self' },
 ]
 
 const { pathname } = Astro.url
@@ -30,7 +29,7 @@ const { pathname } = Astro.url
         <nav class="flex w-full items-center p-2 md:p-0">
             <div class="flex-1 font-bold">
                 <a href="/" class="flex items-center gap-2 pl-3">
-                    <img src={logoStar.src} alt="logo" width="26" /> {author.nickname}
+                    <img src={svgLogoPin.src} alt="logo" width="20" /> {author.nickname}
                 </a>
             </div>
             <a href="#" class="flex md:hidden" id="menu-open">

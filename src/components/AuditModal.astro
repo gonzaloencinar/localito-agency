@@ -1,5 +1,4 @@
 ---
-import { author } from '../sample'
 ---
 
 <div id="audit-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4">
@@ -34,12 +33,11 @@ import { author } from '../sample'
         </div>
 
         <div class="flex flex-col gap-0.5">
-          <label for="audit-phone" class="text-xs font-medium">Teléfono *</label>
+          <label for="audit-phone" class="text-xs font-medium">Teléfono</label>
           <input
             type="tel"
             id="audit-phone"
             name="telefono"
-            required
             placeholder="612 345 678"
             class="border-2 border-black bg-white px-3 py-2 text-sm outline-none focus:shadow-[2px_2px_0px_rgba(0,0,0,0.3)] transition-shadow"
           />
@@ -62,7 +60,7 @@ import { author } from '../sample'
         <div class="flex flex-col gap-0.5">
           <label for="audit-web" class="text-xs font-medium">URL de tu web</label>
           <input
-            type="url"
+            type="text"
             id="audit-web"
             name="web"
             placeholder="https://tunegocio.com"
@@ -109,7 +107,7 @@ import { author } from '../sample'
   </div>
 </div>
 
-<script define:vars={{ email: author.email }}>
+<script>
 document.addEventListener('DOMContentLoaded', function () {
   const modal = document.getElementById('audit-modal')
   const overlay = document.getElementById('audit-overlay')
@@ -141,27 +139,42 @@ document.addEventListener('DOMContentLoaded', function () {
     if (e.key === 'Escape') closeModal()
   })
 
-  form.addEventListener('submit', function (e) {
+  form.addEventListener('submit', async function (e) {
     e.preventDefault()
     const data = new FormData(form)
-    const subject = 'Solicitud de auditoría SEO - ' + data.get('nombre')
-    const body = [
-      'Nombre: ' + data.get('nombre'),
-      'Email: ' + data.get('email'),
-      'Teléfono: ' + data.get('telefono'),
-      'Web: ' + (data.get('web') || 'No indicada'),
-      'Ficha de Google: ' + (data.get('ficha_google') || 'No indicada'),
-      'Mensaje: ' + (data.get('mensaje') || '-'),
-    ].join('\n')
+    const submitBtn = form.querySelector('button[type="submit"]')
+    submitBtn.disabled = true
+    submitBtn.textContent = 'Enviando...'
 
-    window.location.href = email.replace('mailto:', 'mailto:') +
-      '?subject=' + encodeURIComponent(subject) +
-      '&body=' + encodeURIComponent(body)
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          nombre: data.get('nombre'),
+          email: data.get('email'),
+          telefono: data.get('telefono'),
+          web: data.get('web'),
+          ficha: data.get('ficha_google'),
+          mensaje: data.get('mensaje'),
+          tipo: 'auditoria',
+        }),
+      })
 
-    form.classList.add('hidden')
-    success.classList.remove('hidden')
-
-    setTimeout(closeModal, 3000)
+      if (res.ok) {
+        form.classList.add('hidden')
+        success.classList.remove('hidden')
+        setTimeout(closeModal, 3000)
+      } else {
+        submitBtn.disabled = false
+        submitBtn.textContent = 'Enviar solicitud'
+        alert('Error al enviar. Inténtalo de nuevo.')
+      }
+    } catch {
+      submitBtn.disabled = false
+      submitBtn.textContent = 'Enviar solicitud'
+      alert('Error al enviar. Inténtalo de nuevo.')
+    }
   })
 })
 </script>

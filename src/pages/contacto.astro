@@ -1,0 +1,161 @@
+---
+import '../styles/global.css'
+import Layout from "../layouts/Layout.astro"
+import Header from '../components/Header.astro'
+import Footer from '../components/Footer.astro'
+import AuditModal from '../components/AuditModal.astro'
+import { author } from '../sample'
+
+import svgPinkStar from '../assets/pink-star.svg'
+import svgRedStar from '../assets/red-star.svg'
+import svgHl from '../assets/hl.svg'
+---
+
+<Layout title="Contacto | Localito">
+  <Header />
+
+  <section class="py-30 px-3">
+    <div class="max-w-4xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-[45%_55%] gap-10 items-start">
+
+        <div class="flex flex-col gap-6 order-1">
+          <h1 class="text-4xl font-medium">Hablemos de tu negocio</h1>
+          <p class="text-lg leading-relaxed">
+            Cuéntanos sobre tu negocio y te diremos cómo podemos ayudarte a dominar las búsquedas locales en tu zona.
+          </p>
+        </div>
+
+        <div class="bg-white border-3 p-6 shadow-[6px_6px_0px_rgba(0,0,0,0.3)] relative order-2 md:row-span-2">
+          <div class="size-2 bg-white border-2 border-black absolute -top-2 -right-2"></div>
+          <div class="size-2 bg-white border-2 border-black absolute -top-2 -left-2"></div>
+          <div class="size-2 bg-white border-2 border-black absolute -bottom-2 -left-2"></div>
+          <div class="size-2 bg-white border-2 border-black absolute -bottom-2 -right-2"></div>
+
+          <form class="flex flex-col gap-4" id="contact-form">
+            <div class="grid grid-cols-2 gap-3">
+              <div class="flex flex-col gap-1">
+                <label class="text-sm font-medium">Nombre *</label>
+                <input type="text" name="nombre" required class="border-2 p-2 text-sm bg-[var(--main-bg)]" />
+              </div>
+              <div class="flex flex-col gap-1">
+                <label class="text-sm font-medium">Teléfono</label>
+                <input type="tel" name="telefono" class="border-2 p-2 text-sm bg-[var(--main-bg)]" />
+              </div>
+            </div>
+            <div class="flex flex-col gap-1">
+              <label class="text-sm font-medium">Email *</label>
+              <input type="email" name="email" required class="border-2 p-2 text-sm bg-[var(--main-bg)]" />
+            </div>
+            <div class="grid grid-cols-2 gap-3">
+              <div class="flex flex-col gap-1">
+                <label class="text-sm font-medium">Web</label>
+                <input type="text" name="web" class="border-2 p-2 text-sm bg-[var(--main-bg)]" placeholder="tuweb.es" />
+              </div>
+              <div class="flex flex-col gap-1">
+                <label class="text-sm font-medium">Ficha Google</label>
+                <input type="text" name="ficha" class="border-2 p-2 text-sm bg-[var(--main-bg)]" placeholder="URL o nombre" />
+              </div>
+            </div>
+            <div class="flex flex-col gap-1">
+              <label class="text-sm font-medium">Mensaje</label>
+              <textarea name="mensaje" rows="3" class="border-2 p-2 text-sm bg-[var(--main-bg)]" placeholder="Cuéntanos sobre tu negocio..."></textarea>
+            </div>
+            <div class="relative group w-fit">
+              <button type="submit" class="bg-[var(--blue)] text-black text-md font-medium flex items-center h-12 px-6 border-3 rounded-full cursor-pointer">Enviar solicitud</button>
+              <img src={svgHl.src} width="30" class="absolute -right-7 -bottom-3 transition-all duration-200 group-hover:-bottom-4" />
+            </div>
+          </form>
+
+          <div id="contact-success" class="hidden text-center py-10">
+            <i class="ri-checkbox-circle-line text-4xl text-green-600"></i>
+            <p class="text-xl font-medium mt-3">¡Mensaje enviado!</p>
+            <p class="text-sm mt-1">Te responderemos en menos de 24 horas.</p>
+          </div>
+
+          <img src={svgRedStar.src} width="50" alt="" class="absolute -bottom-6 -right-4 z-10" />
+        </div>
+
+        <div class="flex flex-col gap-4 order-3">
+          <div class="flex items-center gap-3">
+            <div class="size-10 bg-[var(--yellow)] border-2 flex items-center justify-center">
+              <i class="ri-mail-line text-lg"></i>
+            </div>
+            <div>
+              <p class="text-sm text-gray-500">Email</p>
+              <a href={author.email} class="font-medium">hola@localito.io</a>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-3">
+            <div class="size-10 bg-[var(--blue)] border-2 flex items-center justify-center">
+              <i class="ri-map-pin-line text-lg"></i>
+            </div>
+            <div>
+              <p class="text-sm text-gray-500">Ubicación</p>
+              <span class="font-medium">Madrid, España</span>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-3">
+            <div class="size-10 bg-[var(--yellow)] border-2 flex items-center justify-center">
+              <i class="ri-time-line text-lg"></i>
+            </div>
+            <div>
+              <p class="text-sm text-gray-500">Respuesta</p>
+              <span class="font-medium">En menos de 24h</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <img src={svgPinkStar.src} alt="" width="60" class="absolute -bottom-4 left-10 hidden md:block" />
+  </section>
+
+  <Footer />
+  <AuditModal />
+</Layout>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const form = document.getElementById('contact-form')
+  const success = document.getElementById('contact-success')
+
+  form?.addEventListener('submit', async function (e) {
+    e.preventDefault()
+    const data = new FormData(form)
+    const submitBtn = form.querySelector('button[type="submit"]')
+    submitBtn.disabled = true
+    submitBtn.textContent = 'Enviando...'
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          nombre: data.get('nombre'),
+          email: data.get('email'),
+          telefono: data.get('telefono'),
+          web: data.get('web'),
+          ficha: data.get('ficha'),
+          mensaje: data.get('mensaje'),
+          tipo: 'contacto',
+        }),
+      })
+
+      if (res.ok) {
+        form.classList.add('hidden')
+        success.classList.remove('hidden')
+      } else {
+        submitBtn.disabled = false
+        submitBtn.textContent = 'Enviar solicitud'
+        alert('Error al enviar. Inténtalo de nuevo.')
+      }
+    } catch {
+      submitBtn.disabled = false
+      submitBtn.textContent = 'Enviar solicitud'
+      alert('Error al enviar. Inténtalo de nuevo.')
+    }
+  })
+})
+</script>
