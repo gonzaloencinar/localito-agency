@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx skills add https://github.com/vercel-labs/agent-skills --skill web-design-guidelines)",
+      "Bash(npx skills add https://github.com/vercel-labs/agent-skills --skill web-design-guidelines --yes)",
+      "Bash(npx skills add https://github.com/anthropics/skills --skill frontend-design --yes)",
+      "Bash(npx skills add https://github.com/astrolicious/agent-skills --skill astro --yes)",
+      "Bash(npx skills add https://github.com/delineas/astro-framework-agents --skill astro-framework --yes)"
+    ]
+  }
+}
