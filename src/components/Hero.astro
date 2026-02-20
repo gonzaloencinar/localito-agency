@@ -10,6 +10,7 @@ import svgArrow from '../assets/arrow.svg'
 import svgPinkStar from '../assets/pink-star.svg'
 import svgString from '../assets/string.svg'
 
+import svgHl from '../assets/hl.svg'
 import { author, buy } from '../sample'
 
 ---
@@ -21,16 +22,20 @@ import { author, buy } from '../sample'
         <div class="flex flex-col gap-4 pr-0 md:pr-10">
           <img src={svgheroContent.src} alt="logo" width="80" />
 
-            <h1 class="text-5xl font-medium">
-              <span>I build top <br> notch</span>
+            <h1 class="text-lg font-medium uppercase tracking-widest">Agencia SEO Local</h1>
+            <h2 class="text-5xl font-medium">
+              <span>Posiciona tu negocio en <br /></span>
               <span class="relative">
                 <span class="absolute bg-[var(--yellow)] w-full h-[50%] left-0 bottom-0 z-1"></span>
-                <span class="relative z-5">websites</span>
+                <span class="relative z-5">Google Maps</span>
               </span>
-            </h1>
-            <p class="text-xl">Passionate UX Engineer & Designer crafting intuitive, user-centered experiences.</p>
+            </h2>
+            <p class="text-xl">Somos especialistas en SEO local. Optimizamos tu Google Business Profile y tu presencia online para que tus clientes te encuentren en búsquedas locales.</p>
            <div class="flex mt-5">
-             <Button text="See portfolio" link="/#work" target="_self" />
+             <div class="relative group">
+               <button data-audit-trigger class="bg-[var(--blue)] text-black text-md font-medium flex items-center h-12 px-6 border-3 rounded-full cursor-pointer">Solicita tu auditoría gratuita</button>
+               <img src={svgHl.src} width="30" class="absolute -right-7 -bottom-3 transition-all duration-200 group-hover:-bottom-4" />
+             </div>
            </div>
         </div>
         <div class="relative mt-40 md:mt-0">
@@ -50,9 +55,9 @@ import { author, buy } from '../sample'
 
           <div class="relative p-8 bg-white">
             <img src={svgRedStar.src} width="80" alt="red-star" class="absolute bottom-1 right-1 z-10" />
-            <img src={svgIdea.src} width="60" alt="idea" class="absolute top-16 -left-3 z-10" />   
-            <img src={svgString.src} width="50" alt="string" class="absolute -top-6 -right-2 z-10" />             
-          
+            <img src={svgIdea.src} width="60" alt="idea" class="absolute top-16 -left-3 z-10" />
+            <img src={svgString.src} width="50" alt="string" class="absolute -top-6 -right-2 z-10" />
+
              <div id="me" class="w-full h-[310px] border-2"></div>
              <Bars />
           </div>
@@ -67,8 +72,8 @@ import { author, buy } from '../sample'
 
   <style>
     #me{
-     background-image: url('https://images.pexels.com/photos/1858175/pexels-photo-1858175.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
-     background-position: top;
+     background-image: url('https://images.pexels.com/photos/7688336/pexels-photo-7688336.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+     background-position: center;
      background-size: cover;
     }
    </style>

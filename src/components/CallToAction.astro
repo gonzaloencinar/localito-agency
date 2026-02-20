@@ -1,17 +1,19 @@
 ---
 import svgPinkStar from '../assets/pink-star.svg'
-import Button from './Button.astro'
-import { buy } from '../sample'
+import svgHl from '../assets/hl.svg'
 
 ---
 
 
-<section class="px-3" id="hire">
+<section class="px-3" id="contacto">
     <div class="max-w-3xl mx-auto bg-white text-center flex flex-col gap-4 border-3 shadow-[8px_8px_0px_rgba(0,0,0,0.3)]  relative p-10">
-     <h1 class="text-3xl">Let’s start designing your project</h1>
-     <p class="text-lg max-w-lg mx-auto">Want to see how to transform your brand into a unique style. send me a message</p>
+     <h2 class="text-3xl">¿Listo para dominar las búsquedas locales?</h2>
+     <p class="text-lg max-w-lg mx-auto">Solicita una auditoría gratuita de tu presencia local y descubre cómo podemos ayudarte a atraer más clientes.</p>
      <div class="flex justify-center">
-       <Button text={buy.title} link={buy.link} target="_blank" />
+       <div class="relative group">
+         <button data-audit-trigger class="bg-[var(--blue)] text-black text-md font-medium flex items-center h-12 px-6 border-3 rounded-full cursor-pointer">Solicita tu auditoría gratuita</button>
+         <img src={svgHl.src} width="30" class="absolute -right-7 -bottom-3 transition-all duration-200 group-hover:-bottom-4" />
+       </div>
      </div>
      <img src={svgPinkStar.src} alt="svg" width="80" class="absolute -top-10 right-20" />
     </div>

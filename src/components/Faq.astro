@@ -1,0 +1,92 @@
+---
+const faqs = [
+  {
+    question: '¿Qué es el SEO local y por qué lo necesita mi negocio?',
+    answer: 'El SEO local es el conjunto de estrategias para mejorar la visibilidad de tu negocio en búsquedas geolocalizadas como "restaurante cerca de mí" o "dentista en Madrid". Es fundamental porque el 46% de todas las búsquedas en Google tienen intención local, y el 76% de las personas que buscan algo cercano visitan el negocio en las siguientes 24 horas.'
+  },
+  {
+    question: '¿Cuánto tiempo tarda en verse resultados del SEO local?',
+    answer: 'Los primeros resultados suelen verse entre 3 y 6 meses, dependiendo de la competencia en tu zona y sector. Algunos cambios, como la optimización de Google Business Profile, pueden generar mejoras visibles en las primeras semanas. Trabajamos con informes mensuales para que puedas seguir el progreso en todo momento.'
+  },
+  {
+    question: '¿Qué es Google Business Profile y por qué es importante?',
+    answer: 'Google Business Profile (antes Google My Business) es la ficha gratuita de tu negocio que aparece en Google Maps y en los resultados de búsqueda local. Es la herramienta más importante del SEO local porque determina cómo apareces en el "pack local" de Google, mostrando tu dirección, horarios, reseñas y fotos a potenciales clientes.'
+  },
+  {
+    question: '¿Cómo pueden las reseñas mejorar mi posicionamiento local?',
+    answer: 'Las reseñas son uno de los factores de ranking más importantes para el SEO local. Google valora tanto la cantidad como la calidad de las reseñas. Un negocio con más reseñas positivas y recientes tiene más probabilidades de aparecer en las primeras posiciones del pack local. Además, las reseñas generan confianza y aumentan la tasa de conversión.'
+  },
+  {
+    question: '¿Qué diferencia hay entre SEO local y SEO tradicional?',
+    answer: 'El SEO tradicional se enfoca en posicionar tu web a nivel nacional o global, mientras que el SEO local se centra en aparecer en búsquedas con intención geográfica. El SEO local trabaja con Google Maps, Google Business Profile, citas en directorios locales y reseñas, elementos que no son relevantes en el SEO tradicional.'
+  },
+  {
+    question: '¿Necesito una web para hacer SEO local?',
+    answer: 'Aunque tener una web optimizada mejora significativamente los resultados, puedes empezar solo con una ficha de Google Business Profile bien optimizada. Sin embargo, para competir en sectores con alta competencia, una web con contenido local optimizado, schema markup y páginas de servicio por zona es prácticamente imprescindible.'
+  },
+]
+---
+
+<section class="py-20 px-3 md:px-10">
+  <div class="max-w-3xl mx-auto">
+    <div class="text-center mb-12">
+      <h2 class="text-4xl font-medium">Preguntas Frecuentes</h2>
+      <p class="text-lg mt-3">Todo lo que necesitas saber sobre el SEO local</p>
+    </div>
+
+    <div class="flex flex-col gap-3">
+      {faqs.map((faq, index) => (
+        <div class="bg-white border-2 shadow-[4px_4px_0px_rgba(0,0,0,0.3)]">
+          <button
+            class="faq-toggle w-full flex items-center justify-between p-5 text-left font-medium text-lg cursor-pointer"
+            data-index={index}
+          >
+            <span>{faq.question}</span>
+            <i class="ri-add-line text-2xl faq-icon transition-transform duration-300"></i>
+          </button>
+          <div class="faq-content overflow-hidden max-h-0 transition-all duration-300">
+            <p class="p-5 pt-0 text-base leading-relaxed">{faq.answer}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  })} />
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('.faq-toggle').forEach(button => {
+    button.addEventListener('click', () => {
+      const content = button.nextElementSibling as HTMLElement
+      const icon = button.querySelector('.faq-icon') as HTMLElement
+
+      const isOpen = content.style.maxHeight && content.style.maxHeight !== '0px'
+
+      document.querySelectorAll('.faq-content').forEach(item => {
+        (item as HTMLElement).style.maxHeight = '0px'
+      })
+      document.querySelectorAll('.faq-icon').forEach(item => {
+        item.classList.remove('rotate-45')
+      })
+
+      if (!isOpen) {
+        content.style.maxHeight = content.scrollHeight + 'px'
+        icon.classList.add('rotate-45')
+      }
+    })
+  })
+})
+</script>

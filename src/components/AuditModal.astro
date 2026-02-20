@@ -1,0 +1,167 @@
+---
+import { author } from '../sample'
+---
+
+<div id="audit-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4">
+  <div id="audit-overlay" class="absolute inset-0 bg-black/60"></div>
+
+  <div class="relative bg-[var(--main-bg)] border-3 shadow-[8px_8px_0px_rgba(0,0,0,0.3)] w-full max-w-lg p-5 md:p-6">
+    <!-- Corner boxes -->
+    <div class="size-2 bg-white border-2 border-black absolute -top-2 -right-2"></div>
+    <div class="size-2 bg-white border-2 border-black absolute -top-2 -left-2"></div>
+    <div class="size-2 bg-white border-2 border-black absolute -bottom-2 -left-2"></div>
+    <div class="size-2 bg-white border-2 border-black absolute -bottom-2 -right-2"></div>
+
+    <button id="audit-close" class="absolute top-3 right-3 cursor-pointer">
+      <i class="ri-close-line text-2xl"></i>
+    </button>
+
+    <h3 class="text-xl font-medium mb-1">Solicita tu auditoría gratuita</h3>
+    <p class="text-xs mb-4">Analizamos tu presencia local y te enviamos un informe personalizado.</p>
+
+    <form id="audit-form" class="flex flex-col gap-2.5">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-2.5">
+        <div class="flex flex-col gap-0.5">
+          <label for="audit-name" class="text-xs font-medium">Nombre *</label>
+          <input
+            type="text"
+            id="audit-name"
+            name="nombre"
+            required
+            placeholder="Tu nombre"
+            class="border-2 border-black bg-white px-3 py-2 text-sm outline-none focus:shadow-[2px_2px_0px_rgba(0,0,0,0.3)] transition-shadow"
+          />
+        </div>
+
+        <div class="flex flex-col gap-0.5">
+          <label for="audit-phone" class="text-xs font-medium">Teléfono *</label>
+          <input
+            type="tel"
+            id="audit-phone"
+            name="telefono"
+            required
+            placeholder="612 345 678"
+            class="border-2 border-black bg-white px-3 py-2 text-sm outline-none focus:shadow-[2px_2px_0px_rgba(0,0,0,0.3)] transition-shadow"
+          />
+        </div>
+      </div>
+
+      <div class="flex flex-col gap-0.5">
+        <label for="audit-email" class="text-xs font-medium">Email *</label>
+        <input
+          type="email"
+          id="audit-email"
+          name="email"
+          required
+          placeholder="tu@email.com"
+          class="border-2 border-black bg-white px-3 py-2 text-sm outline-none focus:shadow-[2px_2px_0px_rgba(0,0,0,0.3)] transition-shadow"
+        />
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-2.5">
+        <div class="flex flex-col gap-0.5">
+          <label for="audit-web" class="text-xs font-medium">URL de tu web</label>
+          <input
+            type="url"
+            id="audit-web"
+            name="web"
+            placeholder="https://tunegocio.com"
+            class="border-2 border-black bg-white px-3 py-2 text-sm outline-none focus:shadow-[2px_2px_0px_rgba(0,0,0,0.3)] transition-shadow"
+          />
+        </div>
+
+        <div class="flex flex-col gap-0.5">
+          <label for="audit-gbp" class="text-xs font-medium">Ficha de Google</label>
+          <input
+            type="text"
+            id="audit-gbp"
+            name="ficha_google"
+            placeholder="URL o nombre del negocio"
+            class="border-2 border-black bg-white px-3 py-2 text-sm outline-none focus:shadow-[2px_2px_0px_rgba(0,0,0,0.3)] transition-shadow"
+          />
+        </div>
+      </div>
+
+      <div class="flex flex-col gap-0.5">
+        <label for="audit-message" class="text-xs font-medium">Cuéntanos más sobre tu negocio</label>
+        <textarea
+          id="audit-message"
+          name="mensaje"
+          rows="2"
+          placeholder="Tipo de negocio, objetivos..."
+          class="border-2 border-black bg-white px-3 py-2 text-sm outline-none focus:shadow-[2px_2px_0px_rgba(0,0,0,0.3)] transition-shadow resize-none"
+        ></textarea>
+      </div>
+
+      <button
+        type="submit"
+        class="bg-[var(--blue)] text-black text-sm font-medium h-10 px-6 border-3 rounded-full mt-1 cursor-pointer transition-shadow hover:shadow-[3px_3px_0px_rgba(0,0,0,0.3)]"
+      >
+        Enviar solicitud
+      </button>
+    </form>
+
+    <div id="audit-success" class="hidden text-center py-6">
+      <i class="ri-check-double-line text-4xl text-green-600"></i>
+      <h3 class="text-xl font-medium mt-3">¡Solicitud enviada!</h3>
+      <p class="text-sm mt-1">Te contactaremos en menos de 24 horas.</p>
+    </div>
+  </div>
+</div>
+
+<script define:vars={{ email: author.email }}>
+document.addEventListener('DOMContentLoaded', function () {
+  const modal = document.getElementById('audit-modal')
+  const overlay = document.getElementById('audit-overlay')
+  const closeBtn = document.getElementById('audit-close')
+  const form = document.getElementById('audit-form')
+  const success = document.getElementById('audit-success')
+
+  function openModal(e) {
+    e.preventDefault()
+    modal.classList.remove('hidden')
+    modal.classList.add('flex')
+    document.body.style.overflow = 'hidden'
+  }
+
+  function closeModal() {
+    modal.classList.add('hidden')
+    modal.classList.remove('flex')
+    document.body.style.overflow = ''
+  }
+
+  document.querySelectorAll('[data-audit-trigger]').forEach(function (btn) {
+    btn.addEventListener('click', openModal)
+  })
+
+  closeBtn.addEventListener('click', closeModal)
+  overlay.addEventListener('click', closeModal)
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeModal()
+  })
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault()
+    const data = new FormData(form)
+    const subject = 'Solicitud de auditoría SEO - ' + data.get('nombre')
+    const body = [
+      'Nombre: ' + data.get('nombre'),
+      'Email: ' + data.get('email'),
+      'Teléfono: ' + data.get('telefono'),
+      'Web: ' + (data.get('web') || 'No indicada'),
+      'Ficha de Google: ' + (data.get('ficha_google') || 'No indicada'),
+      'Mensaje: ' + (data.get('mensaje') || '-'),
+    ].join('\n')
+
+    window.location.href = email.replace('mailto:', 'mailto:') +
+      '?subject=' + encodeURIComponent(subject) +
+      '&body=' + encodeURIComponent(body)
+
+    form.classList.add('hidden')
+    success.classList.remove('hidden')
+
+    setTimeout(closeModal, 3000)
+  })
+})
+</script>

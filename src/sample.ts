@@ -1,15 +1,15 @@
 const author = {
-  name: `Angela`,
-  nickname: `angie`,
-  tiktok: `https://www.tiktok.com/@indieteamofone`,
-  ig: `https://www.instagram.com/indieteamofone/`,
-  x: `https://x.com/indieteamofone`,
-  email: "mailto:anthonylannn@gmail.com",
+  name: `Localito`,
+  nickname: `localito`,
+  linkedin: `https://www.linkedin.com/company/localito`,
+  ig: `https://www.instagram.com/localito.seo/`,
+  x: `https://x.com/localito_seo`,
+  email: "mailto:hola@localito.es",
 };
 
 const buy = {
-  title: `See on Github`,
-  link: `https://github.com/anthonylan/angie`,
+  title: `Solicita tu auditoría gratuita`,
+  link: `#contacto`,
 };
 
 export { author, buy };

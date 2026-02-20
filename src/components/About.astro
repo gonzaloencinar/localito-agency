@@ -1,0 +1,52 @@
+---
+import svgPinkStar from '../assets/pink-star.svg'
+import svgRedStar from '../assets/red-star.svg'
+---
+
+<section class="py-20 px-3 md:px-10 relative overflow-hidden">
+  <img src={svgPinkStar.src} alt="svg" width="80" class="absolute -left-8 bottom-10" />
+
+  <div class="max-w-4xl mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-[45%_55%] gap-10 items-center">
+
+      <div class="relative">
+        <div class="bg-white border-3 p-6 shadow-[6px_6px_0px_rgba(0,0,0,0.3)] relative">
+          <div class="size-2 bg-white border-2 border-black absolute -top-2 -right-2"></div>
+          <div class="size-2 bg-white border-2 border-black absolute -top-2 -left-2"></div>
+          <div class="size-2 bg-white border-2 border-black absolute -bottom-2 -left-2"></div>
+          <div class="size-2 bg-white border-2 border-black absolute -bottom-2 -right-2"></div>
+
+          <div class="flex flex-col gap-4">
+            <div class="flex items-center gap-3">
+              <span class="text-4xl font-black text-[var(--yellow)]">200+</span>
+              <span class="text-sm">negocios locales<br/>posicionados</span>
+            </div>
+            <div class="border-t-2 pt-4 flex items-center gap-3">
+              <span class="text-4xl font-black text-[var(--yellow)]">8</span>
+              <span class="text-sm">años especializados<br/>en SEO local</span>
+            </div>
+            <div class="border-t-2 pt-4 flex items-center gap-3">
+              <span class="text-4xl font-black text-[var(--yellow)]">96%</span>
+              <span class="text-sm">de clientes renuevan<br/>cada año</span>
+            </div>
+          </div>
+        </div>
+        <img src={svgRedStar.src} width="50" alt="" class="absolute -bottom-6 -right-4 z-10" />
+      </div>
+
+      <div class="flex flex-col gap-5">
+        <h2 class="text-4xl font-medium">Sobre Localito</h2>
+        <p class="text-lg leading-relaxed">
+          Somos una agencia especializada exclusivamente en SEO local. No hacemos SEO genérico, no hacemos redes sociales, no hacemos "de todo un poco". <strong>Hacemos una sola cosa y la hacemos muy bien:</strong> que tus clientes te encuentren cuando buscan lo que ofreces cerca de ellos.
+        </p>
+        <p class="text-lg leading-relaxed">
+          Nuestro equipo combina experiencia técnica en posicionamiento con un conocimiento profundo de cómo funcionan los negocios locales. Sabemos que para un restaurante no es lo mismo una reseña que para una clínica dental, y adaptamos cada estrategia al sector y la zona.
+        </p>
+        <p class="text-lg leading-relaxed">
+          Trabajamos con datos, informes claros y sin contratos de permanencia. Si los resultados no hablan por sí solos, no merecemos tu confianza.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>

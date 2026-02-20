@@ -1,8 +1,8 @@
 ---
 const mytools = [
-  'Figma', 'Framer', 'Webflow', 'Notion', 'Lottie', 'Canva', 'Sketch', 'Shopify', 'Photoshop', 'Adobe XD', 'Miro'
+  'Google Business Profile', 'Google Search Console', 'SEMrush', 'Ahrefs', 'Screaming Frog', 'Google Analytics', 'Schema Markup', 'Google Maps'
 ]
---- 
+---
 <script>
 import { gsap } from 'gsap';
 
@@ -10,8 +10,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const clonedContainer = document.querySelector('#cloned') as any
 
     Array.from(clonedContainer.children).forEach((img: any) => {
-        const clone = img.cloneNode(true); 
-        clonedContainer.appendChild(clone); 
+        const clone = img.cloneNode(true);
+        clonedContainer.appendChild(clone);
     })
 
     const tl = gsap.timeline({ repeat: -1 });
@@ -20,7 +20,6 @@ document.addEventListener('DOMContentLoaded', function () {
     })
 });
 </script>
-  
 
 
 <section class="bg-black py-6 relative z-5">
@@ -32,6 +31,3 @@ document.addEventListener('DOMContentLoaded', function () {
         </div>
     </div>
 </section>
-
-
-

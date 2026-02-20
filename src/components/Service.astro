@@ -3,48 +3,81 @@ import researchIcon from '../assets/services/research.svg'
 import wireIcon from '../assets/services/wire.svg'
 import uiIcon from '../assets/services/ui.svg'
 import protoIcon from '../assets/services/proto.svg'
+import postsIcon from '../assets/services/posts.svg'
+import loyaltyIcon from '../assets/services/loyalty.svg'
+import signalsIcon from '../assets/services/signals.svg'
+import keywordIcon from '../assets/services/keyword.svg'
+import reportIcon from '../assets/services/report.svg'
 
 import svgPinkStar from '../assets/pink-star.svg'
 
 const stats = [
-  { name: `projects`, value: '50+' },
-  { name: `Client ROI`, value: '120%' },
-  { name: `Experience`, value: '6 years' },
+  { name: `Negocios posicionados`, value: '200+' },
+  { name: `Más visibilidad en Maps`, value: '3x' },
+  { name: `Experiencia`, value: '8 años' },
 ]
 
 const services = [
   {
-     name: `User Research`,
-     desc: `Services we’re providing that derive 99% result`,
+     name: `Keyword Research Local`,
+     desc: `Investigamos las búsquedas reales de tus clientes en tu zona para orientar toda la estrategia`,
+     icon: keywordIcon
+  },
+  {
+     name: `Optimización Google Business Profile`,
+     desc: `Configuración y optimización completa de tu ficha de Google para máxima visibilidad local`,
      icon: researchIcon
   },
   {
-     name: `Wireframing`,
-     desc: `Services we’re providing that derive 99% result`,
+     name: `SEO Local On-Page`,
+     desc: `Optimización de tu web para búsquedas locales con keywords geolocalizadas`,
      icon: wireIcon
   },
   {
-     name: `UI Designing`,
-     desc: `Services we’re providing that derive 99% result`,
-     icon: uiIcon
+     name: `Publicaciones en Ficha GBP`,
+     desc: `Publicaciones estratégicas en tu ficha de Google para atraer más visitas y mejorar la conversión`,
+     icon: postsIcon
   },
   {
-     name: `Prototyping`,
-     desc: `Services we’re providing that derive 99% result`,
+     name: `Citaciones Locales`,
+     desc: `Alta en directorios locales, enlaces desde sitios relevantes y consistencia NAP en toda la web`,
      icon: protoIcon
+  },
+  {
+     name: `Gestión de Reseñas`,
+     desc: `Estrategia para conseguir y gestionar reseñas positivas en Google`,
+     icon: uiIcon
+  },
+]
+
+const extraServices = [
+  {
+     name: `Señales Externas`,
+     desc: `Tráfico de clicks con keywords estratégicas que refuerzan tu posicionamiento local`,
+     icon: signalsIcon
+  },
+  {
+     name: `Sistemas de Fidelización`,
+     desc: `Convertimos clientes puntuales en recurrentes que generan reseñas y recomendaciones orgánicas`,
+     icon: loyaltyIcon
+  },
+  {
+     name: `Informes y Analítica`,
+     desc: `Seguimiento mensual de rankings locales, tráfico desde Maps y conversiones con datos claros`,
+     icon: reportIcon
   },
 ]
 
 ---
 
 
-<section class="relative px-3 md:px-10 overflow-hidden">
+<section class="relative px-3 md:px-10 overflow-hidden" id="servicios">
     <img src={svgPinkStar.src} alt="svg" width="80" class="absolute -right-8 bottom-0" />
-  
+
     <div class="max-w-4xl mx-auto">
       <div class="grid grid-cols-1 md:grid-cols-[60%_40%] py-10 relative">
         <div class="flex items-end">
-          <h1 class="text-4xl">Services we’re providing that derive 99% result</h1>
+          <h2 class="text-4xl">Servicios de SEO local que impulsan tu negocio</h2>
           <svg class="size-20" viewBox="0 0 37 35" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M19.5479 4.4031C18.6713 5.80238 19.9271 9.81219 21.7001 11.2897C23.0602 12.3947 24.0665 11.888 24.3315 9.94798C24.6359 7.90326 23.1377 5.00064 21.4323 4.27109C20.1328 3.70088 19.9764 3.72964 19.5479 4.4031Z" fill="black"/>
             <path d="M7.84038 5.33376C6.96374 6.73304 8.21957 10.7429 9.99262 12.2204C11.3527 13.3254 12.359 12.8186 12.624 10.8786C12.9284 8.83392 11.4302 5.9313 9.72476 5.20175C8.42528 4.63154 8.26883 4.66031 7.84038 5.33376Z" fill="black"/>
@@ -52,26 +85,37 @@ const services = [
           </svg>
         </div>
       </div>
-  
+
       <div class="grid grid-cols-1 md:grid-cols-[30%_70%] border-t-2">
         <div class="flex flex-col border-l-2 border-r-2 md:border-b-2 md:border-r-0 md:border-l-0">
-          {stats.map(item => ( 
+          {stats.map(item => (
             <div class="flex flex-col p-3 md:p-6  md:border-b-2 last:border-none">
-              <h1 class="text-2xl font-medium">{item.value}</h1>
+              <span class="text-2xl font-medium block">{item.value}</span>
               <p class="text-sm">{item.name}</p>
             </div>
           ))}
         </div>
-        <div class="grid grid-cols-2 border-r-2 border-t-2 md:border-r-0 md:border-t-0">
-          {services.map(item => ( 
-           <div class="flex flex-col gap-2 p-4 md:p-6 border-l-2 border-b-2">
-             <img src={item.icon.src} width="40" alt="" />
-             <h3 class="text-xl font-medium">{item.name}</h3>
-             <p>{item.desc}</p>
-           </div>
-          ))}
+        <div class="border-t-2 md:border-t-0">
+          <div class="grid grid-cols-2 md:grid-cols-3">
+            {services.map(item => (
+             <div class="flex flex-col gap-2 p-4 md:p-6 border-l-2 border-b-2 border-r-2 md:border-r-0">
+               <img src={item.icon.src} width="40" alt="" />
+               <h3 class="text-xl font-medium">{item.name}</h3>
+               <p>{item.desc}</p>
+             </div>
+            ))}
+          </div>
+          <div class="grid grid-cols-2 md:grid-cols-3">
+            {extraServices.map(item => (
+             <div class="flex flex-col gap-2 p-4 md:p-6 border-l-2 border-b-2 border-r-2 md:border-r-0">
+               <img src={item.icon.src} width="40" alt="" />
+               <h3 class="text-xl font-medium">{item.name}</h3>
+               <p>{item.desc}</p>
+             </div>
+            ))}
+          </div>
         </div>
       </div>
-  
+
     </div>
    </section>

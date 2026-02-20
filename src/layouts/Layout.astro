@@ -1,11 +1,57 @@
+---
+interface Props {
+	title?: string;
+	description?: string;
+}
+
+const {
+	title = "Localito | Agencia de SEO Local",
+	description = "Localito es tu agencia de SEO local. Posicionamos tu negocio en Google Maps y búsquedas locales. Optimización de Google Business Profile, gestión de reseñas y link building local."
+} = Astro.props;
+---
+
 <!doctype html>
-<html lang="en">
+<html lang="es">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Angie Portfolio</title>
+		<title>{title}</title>
+		<meta name="description" content={description} />
+
+		<!-- Open Graph -->
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:type" content="website" />
+		<meta property="og:locale" content="es_ES" />
+		<meta property="og:site_name" content="Localito" />
+
+		<!-- Twitter Card -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+
+		<!-- Schema LocalBusiness -->
+		<script type="application/ld+json" set:html={JSON.stringify({
+			"@context": "https://schema.org",
+			"@type": "ProfessionalService",
+			"name": "Localito",
+			"description": "Agencia especializada en SEO local. Posicionamos negocios en Google Maps y búsquedas locales.",
+			"url": "https://localito.es",
+			"email": "hola@localito.es",
+			"serviceType": ["SEO Local", "Optimización Google Business Profile", "Gestión de Reseñas", "Citaciones Locales"],
+			"areaServed": {
+				"@type": "Country",
+				"name": "España"
+			},
+			"knowsAbout": ["SEO local", "Google Business Profile", "Google Maps", "Posicionamiento local", "Reseñas Google"],
+			"sameAs": [
+				"https://www.linkedin.com/company/localito",
+				"https://www.instagram.com/localito.seo/",
+				"https://x.com/localito_seo"
+			]
+		})} />
 	</head>
 	<body>
 		<slot />

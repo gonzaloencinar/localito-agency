@@ -1,0 +1,47 @@
+---
+import svgPinkStar from '../assets/pink-star.svg'
+
+const steps = [
+  {
+    number: '01',
+    title: 'Auditoría',
+    desc: 'Analizamos tu presencia local actual, tu ficha de Google, tu web y la de tus competidores.'
+  },
+  {
+    number: '02',
+    title: 'Estrategia',
+    desc: 'Diseñamos un plan personalizado de SEO local adaptado a tu negocio y tu zona.'
+  },
+  {
+    number: '03',
+    title: 'Implementación',
+    desc: 'Optimizamos tu ficha, web y presencia online en directorios y plataformas locales.'
+  },
+  {
+    number: '04',
+    title: 'Resultados',
+    desc: 'Monitorizamos y mejoramos tu posicionamiento con informes mensuales transparentes.'
+  },
+]
+---
+
+<section class="py-20 px-3 md:px-10 relative overflow-hidden">
+  <img src={svgPinkStar.src} alt="svg" width="80" class="absolute -left-8 top-10" />
+
+  <div class="max-w-4xl mx-auto">
+    <div class="text-center mb-12">
+      <h2 class="text-4xl font-medium">Nuestro Proceso</h2>
+      <p class="text-lg mt-3">Así trabajamos para posicionar tu negocio</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+      {steps.map(step => (
+        <div class="bg-white border-2 p-6 flex flex-col gap-3 shadow-[4px_4px_0px_rgba(0,0,0,0.3)]">
+          <span class="text-4xl font-black text-[var(--yellow)]">{step.number}</span>
+          <h3 class="text-xl font-medium">{step.title}</h3>
+          <p class="text-sm">{step.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
