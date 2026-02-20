@@ -1,0 +1,31 @@
+<button
+  data-audit-trigger
+  id="sticky-cta"
+  class="fixed bottom-6 right-6 z-40 bg-[var(--blue)] text-black font-medium border-3 rounded-full shadow-[4px_4px_0px_rgba(0,0,0,0.3)] cursor-pointer transition-all duration-300 translate-y-24 opacity-0 hover:shadow-[6px_6px_0px_rgba(0,0,0,0.3)] hover:-translate-y-1 flex items-center gap-2 h-12 px-5 text-sm"
+>
+  <i class="ri-sparkling-line text-lg"></i>
+  <span class="hidden md:inline">Solicita tu auditoría gratuita</span>
+  <span class="md:hidden">Auditoría gratuita</span>
+</button>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const cta = document.getElementById('sticky-cta')
+  const hero = document.querySelector('section')
+
+  function toggle() {
+    if (!hero || !cta) return
+    const heroBottom = hero.getBoundingClientRect().bottom
+    if (heroBottom < 0) {
+      cta.classList.remove('translate-y-24', 'opacity-0')
+      cta.classList.add('translate-y-0', 'opacity-100')
+    } else {
+      cta.classList.add('translate-y-24', 'opacity-0')
+      cta.classList.remove('translate-y-0', 'opacity-100')
+    }
+  }
+
+  window.addEventListener('scroll', toggle, { passive: true })
+  toggle()
+})
+</script>
